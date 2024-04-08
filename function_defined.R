@@ -108,7 +108,7 @@ get_module_color=function(dataExpr,design,project_name,power='auto_selection'){
   net = blockwiseModules(dataExpr,
                          power = sft_power,
                          corType = "bicor",
-                         maxBlockSize = 7000,
+                         maxBlockSize = 5000,
                          TOMType = "signed", 
                          networkType = "signed",
                          minModuleSize = 200,
