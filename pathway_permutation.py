@@ -23,7 +23,7 @@ save_dict={'test':Res}
 df=pd.DataFrame(save_dict)
 df.to_csv('D:/two_diseases/pathways_permutate.csv')
 for i in Res:
-    if i>=base_line:
+    if i>base_line:
         count+=1
 print(count)
 print((count+1)/(total+1))  
