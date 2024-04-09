@@ -8,7 +8,11 @@ psoriasis=extract_instruments(outcomes = exposures,
 chd_out_dat<-extract_outcome_data(snps=psoriasis$SNP,
                                   outcomes = outcome,
                                   proxies = T)
+dat <- harmonise_data(
+  exposure_dat = psoriasis, 
+  outcome_dat = chd_out_dat)
 single <- mr_leaveoneout(dat)
+###check the outlier 
 mr_leaveoneout_plot(single)
 dat=dat[-3,]
 calculate_F=function(beta,se){
@@ -17,6 +21,10 @@ calculate_F=function(beta,se){
 }
 ps1=psoriasis[-3,]
 calculate_F(ps1$beta.exposure,ps1$se.exposure) |> mean()
+res=mr(dat)
+generate_odds_ratios(res)
+mr_heterogeneity(dat)
+mr_pleiotropy_test(dat)
 #get_IV_F=function(exposure_data1,Ncases,Ncontrols,exposure=T){
   ### calculate the Rsqure
   IV=dim(exposure_data1)[1]
