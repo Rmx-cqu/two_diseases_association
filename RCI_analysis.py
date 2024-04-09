@@ -702,7 +702,7 @@ if __name__=='__main__':
             print(similar1,similar2)
             res.append(result)
         df=pd.DataFrame(res)
-        print(np.quantile(res,0.999))
+        
         if validate:
             save_dir=os.path.join(work_dir,'permutation_test_all_validate.csv')
         else:
