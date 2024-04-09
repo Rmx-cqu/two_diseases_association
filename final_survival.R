@@ -68,7 +68,7 @@ y=data.matrix(Surv(time=LIHC_clinical1$OS.time,
  #                    event = LIHC_clinical1$PFI))
 y |> head()
 log_final_exp=log2(final_exp+1)
-#final_exp1=final_exp[,c('KPNA2','AURKA','PTTG1','FAM83D')]
+
 fit=cv.glmnet(x=as.matrix(log_final_exp),
               y,
               family = 'cox',
