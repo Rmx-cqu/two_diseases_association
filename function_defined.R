@@ -77,7 +77,10 @@ get_TCGA_exp=function(TCGA_ID,data_format='count'){
 get_module_color=function(dataExpr,design,project_name,power='auto_selection'){
   library(WGCNA)
   powers=c(c(1:10),seq(from = 12, to=30, by=2))
-  sft=pickSoftThreshold(dataExpr,powerVector = powers,verbose = 5)
+  sft=pickSoftThreshold(dataExpr,powerVector = powers,
+                          verbose = 5,
+                          networkType = "signed",
+                          corFnc = 'bicor')
   
   sizeGrWindow(9,5)
   par(mfrow=c(1,2))
@@ -108,7 +111,6 @@ get_module_color=function(dataExpr,design,project_name,power='auto_selection'){
   net = blockwiseModules(dataExpr,
                          power = sft_power,
                          corType = "bicor",
-                         maxBlockSize = 5000,
                          TOMType = "signed", 
                          networkType = "signed",
                          minModuleSize = 200,
