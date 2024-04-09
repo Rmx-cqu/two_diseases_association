@@ -102,11 +102,8 @@ get_module_color=function(dataExpr,design,project_name,power='auto_selection'){
   print(sft$powerEstimate)
   saveTOM_filename=paste0(project_name,'_TOM')
   ### build the networks
-  if (power=='auto_selection'){
-    sft_power=sft$powerEstimate
-  }
-  else{
-    sft_power=7
+  sft_power=sft$powerEstimate
+
   }
   net = blockwiseModules(dataExpr,
                          power = sft_power,
